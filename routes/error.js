@@ -7,6 +7,7 @@ function notFound(req, res, next) {
 function errorHandler(err, req, res, next) {
   res.status(res.statusCode || 500);
   console.log(err.message);
+  console.log(err.stack);
   res.json({
     message: err.message,
     // stack: err.stack,

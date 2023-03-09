@@ -50,7 +50,9 @@ const getTimeline = async (req, res, next) => {
     // const user = await User.findById(userId);
     // const allFollowings = user.followings;
 
-    res.status(200).json("Work is under process");
+    const allPosts = await Post.find().limit(20);
+
+    res.status(200).json({ allPosts });
   } catch (error) {
     next(error);
   }

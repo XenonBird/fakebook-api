@@ -6,6 +6,7 @@ const { port } = require("./config/config");
 const authRoutes = require("./routes/authRoutes");
 const postRoutes = require("./routes/postRoutes");
 const { notFound, errorHandler } = require("./routes/error");
+const userRoutes = require("./routes/userRoutes");
 
 // APP, MIDDLEWARES AND CONFIGURATIONS
 const app = express();
@@ -16,6 +17,7 @@ app.use(cors());
 
 // ROUTES
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes)
 app.use("/api/post", postRoutes);
 
 app.use(notFound);
