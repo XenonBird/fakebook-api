@@ -9,5 +9,6 @@ module.exports = {
     host: "http://localhost/",
   },
   port: 5000,
+  tokenValidity: process.env.TOKEN_VALIDITY || 86400000, // 1 day in milliseconds
   jwtSecret: process.env.JWT_SECRET,
 };

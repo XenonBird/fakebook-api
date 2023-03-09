@@ -29,11 +29,13 @@ const registerUser = async (req, res, next) => {
     const newUser = new User({ email, username, hash: hashedPassword });
     const user = await newUser.save();
 
-    const tokenData = { id: user._id, username: user.username };
+    const tokenData = { id: user._id, username: user.username, ip: req.ip };
     const token = jwt.sign(tokenData, jwtSecret);
 
     const { hash, type, updatedAt, __v, ...others } = user._doc;
-    res.status(200).json({ ...others, token });
+
+    res.set("token", token);
+    res.status(200).json({ user: others });
   } catch (error) {
     next(error);
   }
@@ -60,10 +62,12 @@ const loginUser = async (req, res, next) => {
       throw new Error("Incorrect password");
     }
 
-    const tokenData = { id: user._id, username: user.username };
+    const tokenData = { id: user._id, username: user.username, ip: req.ip };
     const token = jwt.sign(tokenData, jwtSecret);
     const { hash, type, updatedAt, __v, ...others } = user._doc;
-    res.status(200).json({ ...others, token });
+
+    res.set("token", token);
+    res.status(200).json({ user: others });
   } catch (error) {
     next(error);
   }
@@ -71,8 +75,8 @@ const loginUser = async (req, res, next) => {
 
 const logoutUser = async (req, res, next) => {
   try {
-    const token = "";
-    res.status(200).json({ token });
+    res.set("token", "");
+    res.status(200).json("OK");
   } catch (error) {
     next(error);
   }

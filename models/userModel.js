@@ -24,24 +24,24 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    // followings: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "User",
-    //   },
-    // ],
-    // followers: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "User",
-    //   },
-    // ],
-    // posts: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Post",
-    //   },
-    // ],
+    followings: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    followers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    posts: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
     type: {
       type: String,
       enum: ["regular", "admin", "developer"],

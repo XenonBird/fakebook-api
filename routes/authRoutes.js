@@ -7,9 +7,7 @@ const {
 
 // Methods
 authRoutes.post("/register", registerUser);
-
 authRoutes.post("/login", loginUser);
-
 authRoutes.post("/logout", logoutUser);
 
 module.exports = authRoutes;

@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { port } = require("./config/config");
 const authRoutes = require("./routes/authRoutes");
+const postRoutes = require("./routes/postRoutes");
 const { notFound, errorHandler } = require("./routes/error");
 
 // APP, MIDDLEWARES AND CONFIGURATIONS
@@ -14,6 +15,7 @@ app.use(cors());
 
 // ROUTES
 app.use("/api/auth", authRoutes);
+app.use("/api/post", postRoutes)
 
 app.use(notFound);
 app.use(errorHandler);
