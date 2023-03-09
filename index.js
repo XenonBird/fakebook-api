@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const ip = require("ip");
 const cors = require("cors");
 const { port } = require("./config/config");
 const authRoutes = require("./routes/authRoutes");
@@ -15,7 +16,7 @@ app.use(cors());
 
 // ROUTES
 app.use("/api/auth", authRoutes);
-app.use("/api/post", postRoutes)
+app.use("/api/post", postRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
@@ -24,5 +25,5 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.clear();
   require("./config/db-connection");
-  console.log(`🟢 Server is running on http://127.0.0.1:${port}`);
+  console.log(`🟢 Server is running on http://${ip.address()}:${port}`);
 });

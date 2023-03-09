@@ -4,14 +4,7 @@ const { db } = require("./config");
 // MONGOOSE CONFIGURATION
 mongoose.set("strictQuery", false);
 
-var uri;
-if (db.atlas) {
-  // FOR ATLAS
-  url = `mongodb+srv://${db.user}:${db.pass}@database0.ujbgmdc.mongodb.net/?retryWrites=true&w=majority`;
-} else {
-  // FOR LOCAL
-  url = `mongodb://${db.host}:${db.port}`;
-}
+const url = db.url;
 
 // CONNECTION TO MONGODB
 mongoose
