@@ -1,3 +1,19 @@
 {
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+
+   "version": 2,
+
+   "name": "fakebook-backend",
+
+   "builds": [
+
+      { "src": "server.js", "use": "@vercel/node" }
+
+   ],
+
+   "routes": [
+
+      { "src": "/(.*)", "dest": "/server.js" }
+
+   ]
+
 }
